@@ -76,3 +76,49 @@ def structure_features(text: str) -> Dict[str, float]:
         "lexical_entropy": round(lexical_entropy(tokens), 4),
         "line_end_similarity": round(line_end_similarity(lines), 4),
     }
+
+import pronouncing
+import re
+import math
+from collections import Counter
+
+
+def get_phonetic_ending(word):
+    phones = pronouncing.phones_for_word(word.lower())
+    if not phones:
+        return None
+
+    phonemes = phones[0].split()
+    for i in range(len(phonemes) - 1, -1, -1):
+        if phonemes[i][-1].isdigit():  # stressed vowel
+            return tuple(phonemes[i:])
+    return tuple(phonemes[-2:])
+
+
+def phonetic_endings(text):
+    endings = []
+    for line in text.split("\n"):
+        words = re.findall(r"\b\w+\b", line.lower())
+        if not words:
+            continue
+        pe = get_phonetic_ending(words[-1])
+        if pe:
+            endings.append(pe)
+    return endings
+
+
+def phonetic_repetition_rate(endings):
+    if not endings:
+        return 0.0
+    counts = Counter(endings)
+    repeats = sum(c - 1 for c in counts.values() if c > 1)
+    return repeats / len(endings)
+
+
+def phonetic_entropy(endings):
+    if not endings:
+        return 0.0
+    counts = Counter(endings)
+    total = sum(counts.values())
+    probs = [c / total for c in counts.values()]
+    return -sum(p * math.log2(p) for p in probs)
