@@ -43,5 +43,6 @@ def extract_song_features(text: str) -> Dict[str, float]:
     features["phonetic_repetition_rate"] = phonetic_repetition_rate(endings)
     features["phonetic_entropy"] = phonetic_entropy(endings)
     
+    print("DEBUG features keys:", features.keys())
 
     return features
