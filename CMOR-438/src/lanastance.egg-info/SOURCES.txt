@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+src/lanastance/__init__.py
+src/lanastance/knn.py
+src/lanastance/logistic_regression.py
+src/lanastance/preprocessing.py
+src/lanastance/pronouns.py
+src/lanastance/structure.py
+src/lanastance.egg-info/PKG-INFO
+src/lanastance.egg-info/SOURCES.txt
+src/lanastance.egg-info/dependency_links.txt
+src/lanastance.egg-info/top_level.txt
+tests/test_knn.py
+tests/test_logistic.py
+tests/test_pronouns.py
+tests/test_structure.py

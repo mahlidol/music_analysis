@@ -1,0 +1,40 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Structure vs Surprise in Lana Del Rey Lyrics\n",
+    "\n",
+    "This notebook demonstrates how engineered linguistic features are loaded\n",
+    "and explored for songs from *Born to Die* and *Norman Fucking Rockwell!*.\n",
+    "Full feature engineering, machine learning methods, and interpretations\n",
+    "are documented in the README and implemented in the `lanastance` package."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "df = pd.read_csv(\"../data/features/song_features.csv\")\n",
+    "df.head()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
