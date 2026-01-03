@@ -58,3 +58,6 @@ def build_feature_table():
         writer.writerows(rows)
 
     print(f"\nWrote feature table to {OUTPUT_PATH}")
+
+if __name__ == "__main__":
+    build_feature_table()
