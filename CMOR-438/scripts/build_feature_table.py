@@ -3,7 +3,8 @@ import sys
 import csv
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC_PATH = os.path.join(PROJECT_ROOT, "src") sys.path.append(SRC_PATH)
+SRC_PATH = os.path.join(PROJECT_ROOT, "src") 
+sys.path.append(SRC_PATH)
 from lanastance.preprocessing import extract_song_features
 RAW_DATA_DIR = os.path.join(PROJECT_ROOT, "data", "raw") 
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, "data", "features") 
