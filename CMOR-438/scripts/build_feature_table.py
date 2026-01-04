@@ -10,6 +10,18 @@ RAW_DATA_DIR = os.path.join(PROJECT_ROOT, "data", "raw")
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, "data", "features") 
 OUTPUT_PATH = os.path.join(OUTPUT_DIR, "song_features.csv")
 
+import re
+
+def clean_text(text):
+    # Removes [Speaker:] or [Group:] at the start of a line, and [ ... ] anywhere in the line
+    # You can tweak this for your formatting, but this will work for your examples!
+    # Remove [something] at the start or in the line
+    text = re.sub(r"\[.*?\]", "", text)
+    # Optional: Remove any extra whitespace that results
+    text = re.sub(r"\n\s*\n", "\n", text)  # Collapse multiple blank lines
+    return text.strip()
+
+
 def read_text(path): 
     with open(path, "r", encoding="utf-8") as f: 
         return f.read()
@@ -39,7 +51,8 @@ def build_feature_table():
                 print(f"  Processing song: {song}")
 
                 try:
-                    text = read_text(song_path)
+                    text = clean_text(read_text(song_path))
+
                 except UnicodeDecodeError:
                     print(f"    Skipping non-text file: {filename}")
                     continue
